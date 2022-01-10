@@ -1,0 +1,142 @@
+{
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "blueprint": {
+    "customPackageName": "go-styled-logger",
+    "description": "A CLI logger that outputs emojified log messages and also can render styled markdown via Glamour",
+    "github_id": "",
+    "group": "go",
+    "name": "Styled Logger",
+    "overview": "This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a Taskfile.yml). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by Glamour.",
+    "repository": {
+      "github": "https://github.com/ProfessorManhattan/styled-logger",
+      "gitlab": "https://gitlab.com/megabyte-labs/go/cli/log"
+    },
+    "slug": "styled-logger",
+    "subgroup": "cli",
+    "title": "Styled Logger - A Program that Logs"
+  },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/go/cli/log/-/issues"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "helpUrl": "https://megabyte.space/docs/contributing/commits"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-emoji-conventional"
+    }
+  },
+  "dependencies": {},
+  "description": "A CLI logger that outputs emojified log messages and also can render styled markdown via Glamour",
+  "devDependencies": {
+    "@washingtondc/development": "^1.0.2",
+    "@washingtondc/prettier": "^1.0.0",
+    "@washingtondc/release": "^0.0.2",
+    "eslint-config-strict-mode": "^1.0.0",
+    "sleekfast": "^0.0.1"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-strict-mode"
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
+  "homepage": "https://megabyte.space",
+  "keywords": [
+    "automation",
+    "cli",
+    "go",
+    "go-lang",
+    "golang",
+    "mblabs",
+    "megabytelabs",
+    "professormanhattan",
+    "terminal",
+    "washingtondc"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/!(logo).(jpg|png)": [
+      "task image:compress --"
+    ],
+    "**/*": [
+      "task lint:any --"
+    ],
+    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
+      "task fix:prettier --"
+    ],
+    "**/*.(js|jsx|ts|tsx)": [
+      "task fix:js --",
+      "task lint:js --"
+    ],
+    "**/*.json": [
+      "task fix:json --"
+    ],
+    "**/*.sh": [
+      "task lint:shell --"
+    ],
+    "**/*.toml": [
+      "task lint:toml --"
+    ],
+    "**/*.xml": [
+      "task fix:xml --",
+      "task lint:xml --"
+    ],
+    "**/*.yml": [
+      "task fix:yaml --",
+      "task lint:yaml --"
+    ],
+    "logo.png": [
+      "task image:resize -- 200 200",
+      "task image:compress --"
+    ]
+  },
+  "name": "go-styled-logger",
+  "ntl": {
+    "descriptions": {
+      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+    }
+  },
+  "optionalDependencies": {},
+  "prettier": "@washingtondc/prettier",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "master",
+      "next"
+    ],
+    "extends": "@washingtondc/release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/styled-logger.git"
+  },
+  "scripts": {
+    "help": "task --list",
+    "prepare": "task common:husky",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "bash .config/start.sh"
+  },
+  "type": "module",
+  "version": "0.01"
+}
