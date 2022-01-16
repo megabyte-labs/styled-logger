@@ -32,8 +32,8 @@
   <a title="Version: 0.0.1" href="https://github.com/ProfessorManhattan/styled-logger" target="_blank">
     <img alt="Version: 0.0.1" src="https://img.shields.io/badge/version-0.0.1-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
   </a>
-  <a title="Go version: goVersion" href="https://github.com/ProfessorManhattan/styled-logger/blob/master/go.mod" target="_blank">
-    <img alt="Go version: goVersion" src="https://img.shields.io/github/go-mod/go-version/profile.github}}/{{slug?logo=go&logoColor=white&style=flat-square">
+  <a title="Go version: 17" href="https://github.com/ProfessorManhattan/styled-logger/blob/master/go.mod" target="_blank">
+    <img alt="Go version: 17" src="https://img.shields.io/github/go-mod/go-version/profile.github}}/{{slug?logo=go&logoColor=white&style=flat-square">
   </a>
   <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/go/cli/log/-/commits/master" target="_blank">
     <img alt="Build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/ansible-roles/galaxy_info.role_name?branch=master&label=build&logo=gitlab&style=flat-square">
