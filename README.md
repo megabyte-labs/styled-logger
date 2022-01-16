@@ -124,7 +124,7 @@ If you trust us (and you should not.. trust.. anybody.. EVER), then you can also
 ## Usage
 
 All of the usage instructions can be found by running `log --help`. After running the command, you should be greeted with the following output:
-
+```
 NAME
 	log - Format log message by type 
 EXAMPLE:
@@ -133,6 +133,7 @@ EXAMPLE:
 	OR
 	log --md README.md
 	this will output formated README.md file contents
+```
 
 ### Man Page
 
@@ -173,4 +174,4 @@ I create open source projects out of love. Although I have a job, shelter, and a
 
 ## License
 
-Copyright © 2020-2021 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/log/-/blob/master/LICENSE) licensed.
+Copyright © 2020-2022 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/log/-/blob/master/LICENSE) licensed.
