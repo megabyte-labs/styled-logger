@@ -1,4 +1,4 @@
-package log
+package lggr
 
 import "golang.org/x/crypto/ssh/terminal"
 

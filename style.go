@@ -1,4 +1,4 @@
-package log
+package lggr
 
 import (
 	color "github.com/fatih/color"
