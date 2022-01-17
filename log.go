@@ -37,9 +37,9 @@ func styler(m string) string {
 
 func LogInstructions(t string, m string) {
 	ft := fmt.Sprintf("\n%s", applyStyle(whiteOnBlue, fmt.Sprintf("   %s   ", t)))
-	fmt.Printf("%s\n\n", ft)
+	fmt.Printf("%s\n", ft)
 	m = wrapMessage(m)
-	fmt.Printf("%s\n\n", m)
+	fmt.Printf("%s\n", m)
 }
 
 func LogRaw(m string) {
@@ -56,7 +56,7 @@ func Error(m string) {
 }
 
 func Star(m string) {
-	fmt.Printf("\n%s %s\n\n", `⭐`, styler(m))
+	fmt.Printf("\n%s %s\n", `⭐`, styler(m))
 }
 
 func Success(m string) {
@@ -64,5 +64,5 @@ func Success(m string) {
 }
 
 func Warn(m string) {
-	fmt.Printf("\n%s\n%s %s\n\n", applyStyle(blackOnYellowBolded, `   WARN   `), applyStyle(whiteBold, `┗`), styler(m))
+	fmt.Printf("\n%s\n%s %s\n", applyStyle(blackOnYellowBolded, `   WARN   `), applyStyle(whiteBold, `┗`), styler(m))
 }
