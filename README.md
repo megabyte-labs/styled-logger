@@ -125,7 +125,9 @@ If you trust us (and you should not.. trust.. anybody.. EVER), then you can also
 
 All of the usage instructions can be found by running `binName --help`. After running the command, you should be greeted with the following output:
 
-help_menu_output
+Usage of ./dist/log:
+-md
+Prints formated \*.md file
 
 ### Man Page
 

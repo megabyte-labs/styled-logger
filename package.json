@@ -54,8 +54,9 @@
     "access": "public"
   },
   "blueprint": {
-    "build_command": "go build -o dist/log app/log.go",
-    "build_command_output": "./dist/log",
+    "binName": "stylog",
+    "build_command": "go build -o dist/stylog app/log.go",
+    "build_command_output": "./dist/stylog",
     "customPackageName": "go-styled-logger",
     "description": "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)",
     "github_id": "R_kgDOGpnhPg",
@@ -70,7 +71,7 @@
     },
     "slug": "styled-logger",
     "subgroup": "cli",
-    "title": "Styled Logger - CLI for Logging Pretty Messages"
+    "title": "Styled Logger - A CLI for Logging Pretty Messages"
   },
   "commitlint": {
     "extends": [
