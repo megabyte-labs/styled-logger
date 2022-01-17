@@ -102,10 +102,13 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 You can install the CLI by compiling it from the source as long as you have a recent version of Go installed:
 
 ```
-Add go commands here
+git clone https://github.com/ProfessorManhattan/styled-logger.git
+cd {{#withLast (split repository.github "/")}}this}}{{/withLast
+.build_command
+sudo mv ./dist/stylog /usr/local/bin
 ```
 
-After you compile the program, you should then move the binary file to a location that is in your `PATH`.
+After you compile the program, you should then move the binary file to a location that is in your `PATH` (which is what the last line does in the snippet above).
 
 ### NPM Install Method
 
@@ -125,9 +128,11 @@ If you trust us (and you should not.. trust.. anybody.. EVER), then you can also
 
 All of the usage instructions can be found by running `stylog --help`. After running the command, you should be greeted with the following output:
 
+```
 Usage of ./dist/stylog:
--md
-Prints formated \*.md file
+  -md
+    	Prints formated *.md file
+```
 
 ### Man Page
 
