@@ -6,7 +6,7 @@
   </center>
 </div>
 <div align="center">
-  <center><h1 align="center"><i></i>Styled Logger - CLI for Logging Pretty Messages<i></i></h1></center>
+  <center><h1 align="center"><i></i>Styled Logger - A CLI for Logging Pretty Messages<i></i></h1></center>
   <center><h4 style="color: #18c3d1;"><i></i><a href="https://megabyte.space" target="_blank">Megabyte Labs</a></h4><i></i></center>
 </div>
 
@@ -88,13 +88,13 @@ There are several ways you can install this CLI. You can:
 If you are looking to install the CLI as quickly as possible then you can run the following script which will install the binary to your `/usr/local/bin` folder on macOS or Linux:
 
 ```
-curl -sS https://install.doctor/binName | bash
+curl -sS https://install.doctor/stylog | bash
 ```
 
 Or, if you are on Windows, you can install it by running:
 
 ```
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://install.doctor/binName?os=win'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://install.doctor/stylog?os=win'))
 ```
 
 ### Compile Program with Go
@@ -112,7 +112,7 @@ After you compile the program, you should then move the binary file to a locatio
 Every release is bundled into an NPM package that you can install by running the following command:
 
 ```
-npm install -g binName
+npm install -g stylog
 ```
 
 ### Pre-Built Binary
@@ -123,15 +123,15 @@ If you trust us (and you should not.. trust.. anybody.. EVER), then you can also
 
 ## Usage
 
-All of the usage instructions can be found by running `binName --help`. After running the command, you should be greeted with the following output:
+All of the usage instructions can be found by running `stylog --help`. After running the command, you should be greeted with the following output:
 
-Usage of ./dist/log:
+Usage of ./dist/stylog:
 -md
 Prints formated \*.md file
 
 ### Man Page
 
-Alternatively, if you installed the package via NPM or an installer that set up the man page (e.g. `.deb` or `.rpm`), then you can find usage instructions by running `man binName`.
+Alternatively, if you installed the package via NPM or an installer that set up the man page (e.g. `.deb` or `.rpm`), then you can find usage instructions by running `man stylog`.
 
 <a href="#contributing" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
