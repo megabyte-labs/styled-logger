@@ -2,7 +2,7 @@
   "private": false,
   "name": "go-styled-logger",
   "version": "0.0.1",
-  "description": "A CLI logger that outputs emojified log messages and also can render styled markdown via Glamour",
+  "description": "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",

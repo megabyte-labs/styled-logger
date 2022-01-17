@@ -11,6 +11,7 @@ ansible_variables.json
 .autodoc/
 *.box
 build/
+!*ci/build/
 .c9/
 .cache
 .cache/
@@ -95,4 +96,3 @@ venv.bak/
 !.vscode/settings.json
 !.vscode/tasks.json
 yarn-error.log
-bin/

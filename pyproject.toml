@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "styled-logger"
 version = "0.0.1"
-description = "A CLI logger that outputs emojified log messages and also can render styled markdown via Glamour"
+description = "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)"
 authors = ["Brian Zalewski <brian@megabyte.space>"]
 license = "MIT"
 readme = "README.md"
