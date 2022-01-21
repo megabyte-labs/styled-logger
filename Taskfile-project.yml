@@ -1,0 +1,15 @@
+---
+# Unlike the Taskfile.yml and anything in the .config folder, this file
+# is persistent and remains untouched after automated repository updates.
+version: '3'
+
+tasks:
+  livereload:
+    summary: |
+      This task is called by `task livereload` whenever files in the project
+      are saved. For more information, run `task --summary livereload`.
+    cmds:
+      - go run app/log.go
+      - go run app/log.go info 'Hello `world` - how are you?'
+      - go run app/log.go warn "Testing.. testing"
+      - go run app/log.go error "Test error message"
