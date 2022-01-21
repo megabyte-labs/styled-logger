@@ -57,9 +57,9 @@ proselint = "^0.12.0"
 yamllint = "^1.26.3"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://gitlab.com/megabyte-labs/go/cli/log/-/issues"
+"Bug Tracker" = "https://gitlab.com/megabyte-labs/go/cli/stylog/-/issues"
 "GitHub" = "https://github.com/ProfessorManhattan/styled-logger"
-"GitLab" = "https://gitlab.com/megabyte-labs/go/cli/log"
+"GitLab" = "https://gitlab.com/megabyte-labs/go/cli/stylog"
 "Give Directly" = "https://givedirectly.org"
 "Open Collective" = "https://opencollective.com/megabytelabs"
 "Patreon" = "https://www.patreon.com/ProfessorManhattan"

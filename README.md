@@ -1,7 +1,7 @@
 <!-- ⚠️ This README has been generated from the file(s) ".config/docs/blueprint-readme-cli.md" ⚠️--><div align="center">
   <center>
     <a href="https://github.com/ProfessorManhattan/styled-logger">
-      <img width="148" height="148" alt="Styled Logger logo" src="https://gitlab.com/megabyte-labs/go/cli/log/-/raw/master/logo.png" />
+      <img width="148" height="148" alt="Styled Logger logo" src="https://gitlab.com/megabyte-labs/go/cli/stylog/-/raw/master/logo.png" />
     </a>
   </center>
 </div>
@@ -23,7 +23,7 @@
   <a href="https://github.com/ProfessorManhattan/styled-logger" title="GitHub mirror" target="_blank">
     <img alt="GitHub" src="https://img.shields.io/badge/Mirror-GitHub-333333?logo=github&style=for-the-badge" />
   </a>
-  <a href="https://gitlab.com/megabyte-labs/go/cli/log" title="GitLab repository" target="_blank">
+  <a href="https://gitlab.com/megabyte-labs/go/cli/stylog" title="GitLab repository" target="_blank">
     <img alt="GitLab" src="https://img.shields.io/badge/Repo-GitLab-fc6d26?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAAHJJREFUCNdNxKENwzAQQNEfWU1ZPUF1cxR5lYxQqQMkLEsUdIxCM7PMkMgLGB6wopxkYvAeI0xdHkqXgCLL0Beiqy2CmUIdeYs+WioqVF9C6/RlZvblRNZD8etRuKe843KKkBPw2azX13r+rdvPctEaFi4NVzAN2FhJMQAAAABJRU5ErkJggg==&style=for-the-badge" />
   </a>
 </div>
@@ -35,7 +35,7 @@
   <a title="Go version: goVersion" href="https://github.com/ProfessorManhattan/styled-logger/blob/master/go.mod" target="_blank">
     <img alt="Go version: goVersion" src="https://img.shields.io/github/go-mod/go-version/profile.github}}/{{slug?logo=go&logoColor=white&style=flat-square">
   </a>
-  <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/go/cli/log/-/commits/master" target="_blank">
+  <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/go/cli/stylog/-/commits/master" target="_blank">
     <img alt="Build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/ansible-roles/galaxy_info.role_name?branch=master&label=build&logo=gitlab&style=flat-square">
   </a>
   <a title="Documentation" href="https://megabyte.space/docs/go" target="_blank">
@@ -48,7 +48,7 @@
 
 > </br><h4 align="center">**subheader_description**</h4></br>
 
-![terminalizer_title](https://gitlab.com/megabyte-labs/go/cli/log/-/raw/master/.demo.gif)
+![terminalizer_title](https://gitlab.com/megabyte-labs/go/cli/stylog/-/raw/master/.demo.gif)
 
 <a href="#table-of-contents" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
@@ -69,7 +69,7 @@
 
 ## Overview
 
-This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a Taskfile.yml). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by Glamour.
+This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).
 {{ load:docs/partials/features.md }}
 
 <a href="#installation" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
@@ -173,4 +173,4 @@ I create open source projects out of love. Although I have a job, shelter, and a
 
 ## License
 
-Copyright © 2020-2021 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/log/-/blob/master/LICENSE) licensed.
+Copyright © 2020-2021 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/stylog/-/blob/master/LICENSE) licensed.

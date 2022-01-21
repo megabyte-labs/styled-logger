@@ -12,7 +12,7 @@
   },
   "bugs": {
     "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/go/cli/log/-/issues"
+    "url": "https://gitlab.com/megabyte-labs/go/cli/stylog/-/issues"
   },
   "type": "module",
   "scripts": {
