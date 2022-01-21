@@ -64,10 +64,10 @@
     "gitlab_project_id": "32306832",
     "group": "go",
     "name": "Styled Logger",
-    "overview": "This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a Taskfile.yml). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by Glamour.",
+    "overview": "This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).",
     "repository": {
       "github": "https://github.com/ProfessorManhattan/styled-logger",
-      "gitlab": "https://gitlab.com/megabyte-labs/go/cli/log"
+      "gitlab": "https://gitlab.com/megabyte-labs/go/cli/stylog"
     },
     "slug": "styled-logger",
     "subgroup": "cli",
