@@ -2,7 +2,7 @@
   "private": false,
   "name": "go-styled-logger",
   "version": "0.0.1",
-  "description": "A CLI logger that outputs emojified log messages and also can render styled markdown via Glamour",
+  "description": "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
@@ -12,7 +12,7 @@
   },
   "bugs": {
     "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/go/cli/log/-/issues"
+    "url": "https://gitlab.com/megabyte-labs/go/cli/stylog/-/issues"
   },
   "type": "module",
   "scripts": {
@@ -33,6 +33,7 @@
     "@washingtondc/prettier": "^1.0.0",
     "@washingtondc/release": "^0.0.2",
     "eslint-config-strict-mode": "^1.0.0",
+    "semantic-release-config": "^0.0.2",
     "sleekfast": "^0.0.1"
   },
   "keywords": [
@@ -54,21 +55,24 @@
     "access": "public"
   },
   "blueprint": {
+    "binName": "stylog",
+    "build_command": "go build -o dist/stylog app/log.go",
+    "build_command_output": "./dist/stylog",
     "customPackageName": "go-styled-logger",
-    "description": "A CLI logger that outputs emojified log messages and also can render styled markdown via Glamour",
+    "description": "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)",
     "github_id": "R_kgDOGpnhPg",
     "gitlab_group_id": "14342540",
     "gitlab_project_id": "32306832",
     "group": "go",
     "name": "Styled Logger",
-    "overview": "This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a Taskfile.yml). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by Glamour.",
+    "overview": "This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).",
     "repository": {
       "github": "https://github.com/ProfessorManhattan/styled-logger",
-      "gitlab": "https://gitlab.com/megabyte-labs/go/cli/log"
+      "gitlab": "https://gitlab.com/megabyte-labs/go/cli/stylog"
     },
     "slug": "styled-logger",
     "subgroup": "cli",
-    "title": "Styled Logger - A Program that Logs"
+    "title": "Styled Logger - A CLI for Logging Pretty Messages"
   },
   "commitlint": {
     "extends": [
@@ -77,7 +81,10 @@
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "eslintConfig": {
-    "extends": "eslint-config-strict-mode"
+    "extends": "eslint-config-strict-mode",
+    "rules": {
+      "max-len": "warn"
+    }
   },
   "funding": [
     {
@@ -136,9 +143,17 @@
   "prettier": "@washingtondc/prettier",
   "release": {
     "branches": [
-      "master",
-      "next"
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
     ],
-    "extends": "@washingtondc/release"
+    "extends": "semantic-release-config"
   }
 }

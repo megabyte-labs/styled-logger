@@ -13,13 +13,14 @@ import (
 
 const (
 	helpUsage = `NAME
-	log - Format log message by type 
+	log - Format log message by type
 EXAMPLE:
 	log info "Hello World"
 	availale types info, success, error, star, warn
 	OR
 	log --md README.md
 	this will output formated README.md file contents
+	type log --help for more info
 	`
 
 	wrongFileFormat = `Wrong file format, only *.md files are supported`
@@ -50,9 +51,24 @@ func renderLog(lt string, msg string) {
 	lg.Log(msg)
 }
 
+type Runner interface {
+  Init([]string) error
+  Run() error
+  Name() string
+  Help() string
+}
+
 func main() {
-	md := flag.Bool("md", false, "Prints formated *.md file")
-	flag.Parse()
+
+	md := flag.Bool("md", false, "Outputs in terminal formated content of an *.md file\nExample: log -md README.md\n")
+	_ = flag. Bool("info", false, "Outputs in terminal formated message, preceeded by blue dot symbol\nExample: log -info \"Informational Message FYI\"")
+	_ = flag.Bool("success", false, "Outputs in terminal formated message, preceeded by green check sign symbol\nExample: log -success \"Success Message Congrats!\"")
+  	_ = flag.Bool("error", false, "Outputs in terminal formated message, with title \"ERROR\" followed by error message\nExample: log -error \"Error Message, Fatal Error!\"")
+  	_ = flag.Bool("star", false, "Outputs in terminal formated message, preceeded by star sign symbol\nExample: log -star \"Star Message, Hey!\"")
+  	_ = flag.Bool("warn", false, "Outputs in terminal formated message, with title \"WARN\" followed by warning message\nExample: log -warn \"Warning Message, Hey!\"")
+
+	  flag.Parse()
+
 	args := flag.Args()
 
 	if *md {

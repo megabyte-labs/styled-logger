@@ -1,12 +1,12 @@
 <!-- ⚠️ This README has been generated from the file(s) ".config/docs/blueprint-readme-cli.md" ⚠️--><div align="center">
   <center>
     <a href="https://github.com/ProfessorManhattan/styled-logger">
-      <img width="148" height="148" alt="Styled Logger logo" src="https://gitlab.com/megabyte-labs/go/cli/log/-/raw/master/logo.png" />
+      <img width="148" height="148" alt="Styled Logger logo" src="https://gitlab.com/megabyte-labs/go/cli/stylog/-/raw/master/logo.png" />
     </a>
   </center>
 </div>
 <div align="center">
-  <center><h1 align="center"><i></i>Styled Logger - A Program that Logs<i></i></h1></center>
+  <center><h1 align="center"><i></i>Styled Logger - A CLI for Logging Pretty Messages<i></i></h1></center>
   <center><h4 style="color: #18c3d1;"><i></i><a href="https://megabyte.space" target="_blank">Megabyte Labs</a></h4><i></i></center>
 </div>
 
@@ -23,7 +23,7 @@
   <a href="https://github.com/ProfessorManhattan/styled-logger" title="GitHub mirror" target="_blank">
     <img alt="GitHub" src="https://img.shields.io/badge/Mirror-GitHub-333333?logo=github&style=for-the-badge" />
   </a>
-  <a href="https://gitlab.com/megabyte-labs/go/cli/log" title="GitLab repository" target="_blank">
+  <a href="https://gitlab.com/megabyte-labs/go/cli/stylog" title="GitLab repository" target="_blank">
     <img alt="GitLab" src="https://img.shields.io/badge/Repo-GitLab-fc6d26?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAAHJJREFUCNdNxKENwzAQQNEfWU1ZPUF1cxR5lYxQqQMkLEsUdIxCM7PMkMgLGB6wopxkYvAeI0xdHkqXgCLL0Beiqy2CmUIdeYs+WioqVF9C6/RlZvblRNZD8etRuKe843KKkBPw2azX13r+rdvPctEaFi4NVzAN2FhJMQAAAABJRU5ErkJggg==&style=for-the-badge" />
   </a>
 </div>
@@ -32,10 +32,10 @@
   <a title="Version: 0.0.1" href="https://github.com/ProfessorManhattan/styled-logger" target="_blank">
     <img alt="Version: 0.0.1" src="https://img.shields.io/badge/version-0.0.1-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
   </a>
-  <a title="Go version: 17" href="https://github.com/ProfessorManhattan/styled-logger/blob/master/go.mod" target="_blank">
-    <img alt="Go version: 17" src="https://img.shields.io/github/go-mod/go-version/profile.github}}/{{slug?logo=go&logoColor=white&style=flat-square">
+  <a title="Go version: goVersion" href="https://github.com/ProfessorManhattan/styled-logger/blob/master/go.mod" target="_blank">
+    <img alt="Go version: goVersion" src="https://img.shields.io/github/go-mod/go-version/profile.github}}/{{slug?logo=go&logoColor=white&style=flat-square">
   </a>
-  <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/go/cli/log/-/commits/master" target="_blank">
+  <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/go/cli/stylog/-/commits/master" target="_blank">
     <img alt="Build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/ansible-roles/galaxy_info.role_name?branch=master&label=build&logo=gitlab&style=flat-square">
   </a>
   <a title="Documentation" href="https://megabyte.space/docs/go" target="_blank">
@@ -48,7 +48,7 @@
 
 > </br><h4 align="center">**subheader_description**</h4></br>
 
-![terminalizer_title](https://gitlab.com/megabyte-labs/go/cli/log/-/raw/master/.demo.gif)
+![terminalizer_title](https://gitlab.com/megabyte-labs/go/cli/stylog/-/raw/master/.demo.gif)
 
 <a href="#table-of-contents" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
@@ -69,7 +69,7 @@
 
 ## Overview
 
-This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a Taskfile.yml). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by Glamour.
+This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).
 {{ load:docs/partials/features.md }}
 
 <a href="#installation" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
@@ -88,13 +88,13 @@ There are several ways you can install this CLI. You can:
 If you are looking to install the CLI as quickly as possible then you can run the following script which will install the binary to your `/usr/local/bin` folder on macOS or Linux:
 
 ```
-curl -sS https://install.doctor/log | bash
+curl -sS https://install.doctor/stylog | bash
 ```
 
 Or, if you are on Windows, you can install it by running:
 
 ```
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://install.doctor/log?os=win'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://install.doctor/stylog?os=win'))
 ```
 
 ### Compile Program with Go
@@ -102,17 +102,20 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 You can install the CLI by compiling it from the source as long as you have a recent version of Go installed:
 
 ```
-go build -o bin/log  app/log.go
+git clone https://github.com/ProfessorManhattan/styled-logger.git
+cd {{#withLast (split repository.github "/")}}this}}{{/withLast
+.build_command
+sudo mv ./dist/stylog /usr/local/bin
 ```
-This will output executable program "log" to "bin" folder.
-After you compile the program, you should then move the binary file to a location that is in your `PATH`.
+
+After you compile the program, you should then move the binary file to a location that is in your `PATH` (which is what the last line does in the snippet above).
 
 ### NPM Install Method
 
 Every release is bundled into an NPM package that you can install by running the following command:
 
 ```
-npm install -g log
+npm install -g stylog
 ```
 
 ### Pre-Built Binary
@@ -123,21 +126,17 @@ If you trust us (and you should not.. trust.. anybody.. EVER), then you can also
 
 ## Usage
 
-All of the usage instructions can be found by running `log --help`. After running the command, you should be greeted with the following output:
+All of the usage instructions can be found by running `stylog --help`. After running the command, you should be greeted with the following output:
+
 ```
-NAME
-	log - Format log message by type 
-EXAMPLE:
-	log info "Hello World"
-	availale types info, success, error, star, warn
-	OR
-	log --md README.md
-	this will output formated README.md file contents
+Usage of ./dist/stylog:
+  -md
+    	Prints formated *.md file
 ```
 
 ### Man Page
 
-Alternatively, if you installed the package via NPM or an installer that set up the man page (e.g. `.deb` or `.rpm`), then you can find usage instructions by running `man log`.
+Alternatively, if you installed the package via NPM or an installer that set up the man page (e.g. `.deb` or `.rpm`), then you can find usage instructions by running `man stylog`.
 
 <a href="#contributing" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
@@ -174,4 +173,4 @@ I create open source projects out of love. Although I have a job, shelter, and a
 
 ## License
 
-Copyright © 2020-2022 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/log/-/blob/master/LICENSE) licensed.
+Copyright © 2020-2021 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/stylog/-/blob/master/LICENSE) licensed.
