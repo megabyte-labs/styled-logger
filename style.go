@@ -12,6 +12,7 @@ var (
 	whiteOnRedBolded    = color.New(color.FgHiWhite).Add(color.BgHiRed).Add(color.Bold)
 	whiteBold           = color.New(color.FgWhite).Add(color.Bold)
 	greenBold           = color.New(color.FgGreen).Add(color.Bold)
+  blueBold            = color.New(color.FgBlue).Add(color.Bold)
 	blackOnYellowBolded = color.New(color.FgBlack).Add(color.BgHiYellow).Add(color.Bold)
 )
 
