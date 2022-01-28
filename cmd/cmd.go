@@ -217,7 +217,9 @@ func (cr *CommandRepository) Get(id string) (CommandRunner, bool) {
 func (cr *CommandRepository) Init() {
   flag.Usage = func() {
     fmt.Fprintf(os.Stderr, lggr.HelpTitle("USAGE") + "\n  %s <command> [flags] <argument>\n\n", os.Args[0])
+
     fmt.Fprint(os.Stderr, lggr.HelpTitle("COMMANDS") + "\n")
+
     for _, cmd := range cr.cmds {
       cmd.Flags().Usage()
       fmt.Fprint(os.Stderr, "\n    flags:\n")
