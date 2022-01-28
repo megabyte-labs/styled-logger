@@ -20,3 +20,7 @@ func applyStyle(st *color.Color, s string) string {
 	sts := st.Sprintf("%s", s)
 	return sts
 }
+
+func HelpTitle(s string) string {
+  return applyStyle(blueBold, s)
+}

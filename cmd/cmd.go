@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"tideas/lggr"
 	lgr "tideas/lggr"
 
 	"github.com/charmbracelet/glamour"
@@ -70,11 +71,11 @@ func NewMDCommand() *MDCommand {
   }, "dark", ""}
 
   mdc.fs.Usage = func() {
-    fmt.Fprint(os.Stderr, "Outputs in terminal formated content of an *.md file\nExample: log md -f README.md -s dark")
+    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated content of an *.md file\n%10sExample: log md -f README.md -s dark\n", mdc.name, "")
   }
 
   mdc.fs.StringVar(&mdc.fname, "f", "", "An *.md file to output.")
-  mdc.fs.StringVar(&mdc.style, "s", "dark", "Style to use for ouputing fomated MD file\nDefaults to \"dark\"\nAvailable options are: ascii|dark|light|notty|dracula")
+  mdc.fs.StringVar(&mdc.style, "s", "dark", "Style to use for ouputing fomated MD file. Available options are: dark|ascii|light|notty|dracula")
 
   return mdc
 }
@@ -96,11 +97,7 @@ func NewInfoCommand() *InfoCommand {
   }, ""}
 
   inc.fs.Usage = func() {
-    fmt.Fprint(os.Stderr, "Outputs in terminal formated message, preceeded by blue dot symbol\nExample: log info -m \"Informational Message FYI\"\n")
-    fmt.Fprintln(os.Stderr, "Available flags:")
-    inc.fs.VisitAll(func(f *flag.Flag) {
-      fmt.Fprintf(os.Stderr, "\t--%v %v\n", f.Name, f.Usage)
-    })
+    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, preceeded by blue dot symbol\n%10sExample: log info -m \"Informational Message FYI\"", inc.name, "")
   }
 
   inc.fs.StringVar(&inc.message, "m", "", "Informational Message to be printed")
@@ -124,7 +121,7 @@ func NewSuccessCommand() *SuccessCommand {
   }, ""}
 
   scc.fs.Usage = func() {
-    fmt.Fprint(os.Stderr, "Outputs in terminal formated message, preceeded by green check sign symbol\nExample: log -success \"Success Message Congrats!\"")
+    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, preceeded by green check sign symbol\n%10sExample: log -success \"Success Message Congrats!\"", scc.name, "")
   }
 
   scc.fs.StringVar(&scc.message, "m", "", "Success Message to be printed")
@@ -148,7 +145,7 @@ func NewErrorCommand() *ErrorCommand {
   }, ""}
 
   erc.fs.Usage = func() {
-    fmt.Fprint(os.Stderr, "Outputs in terminal formated message, with title \"ERROR\" followed by error message\nExample: log -error \"Error Message, Fatal Error!\"")
+    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, with title \"ERROR\" followed by error message\n%10sExample: log -error \"Error Message, Fatal Error!\"", erc.name, "")
   }
 
   erc.fs.StringVar(&erc.message, "m", "", "Error Message to be printed")
@@ -172,7 +169,7 @@ func NewStarCommand() *StarCommand {
   }, ""}
 
   stc.fs.Usage = func() {
-    fmt.Fprint(os.Stderr, "Outputs in terminal formated message, preceeded by star sign symbol\nExample: log -star \"Star Message, Hey!\"")
+    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, preceeded by star sign symbol\n%10sExample: log -star \"Star Message, Hey!\"", stc.name, "")
   }
 
   stc.fs.StringVar(&stc.message, "m", "", "Stared Message to be printed")
@@ -185,8 +182,8 @@ type WarnCommand struct {
   message string
 }
 
-func (s *WarnCommand) Run() {
-  lgr.Star(s.message)
+func (w *WarnCommand) Run() {
+  lgr.Star(w.message)
 }
 
 func NewWarnCommand() *WarnCommand {
@@ -196,7 +193,7 @@ func NewWarnCommand() *WarnCommand {
   }, ""}
 
   wrc.fs.Usage = func() {
-    fmt.Fprint(os.Stderr, "Outputs in terminal formated message, with title \"WARN\" followed by warning message\nExample: log -warn \"Warning Message, Hey!\"")
+    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, with title \"WARN\" followed by warning message\n%10sExample: log -warn \"Warning Message, Hey!\"", wrc.name, "")
   }
 
   wrc.fs.StringVar(&wrc.message, "m", "", "Warning Message to be printed")
@@ -219,14 +216,16 @@ func (cr *CommandRepository) Get(id string) (CommandRunner, bool) {
 
 func (cr *CommandRepository) Init() {
   flag.Usage = func() {
-    fmt.Fprintf(os.Stderr, "Custom help %s:\n", os.Args[0])
+    fmt.Fprintf(os.Stderr, lggr.HelpTitle("USAGE") + "\n  %s <command> [flags] <argument>\n\n", os.Args[0])
+    fmt.Fprint(os.Stderr, lggr.HelpTitle("COMMANDS") + "\n")
     for _, cmd := range cr.cmds {
       cmd.Flags().Usage()
-      cmd.Flags().VisitAll(func(f *flag.Flag) {
-        fmt.Fprintf(os.Stderr, "    %v\n", f.Usage) // f.Name, f.Value
-      })
+      fmt.Fprint(os.Stderr, "\n    flags:\n")
+      fmt.Fprintf(os.Stderr, cmd.Flags().FlagUsages() + "\n")
     }
 
+    fmt.Fprint(os.Stderr, lggr.HelpTitle("LEARN MORE") + "\n")
+    fmt.Fprint(os.Stderr, "  Use 'log <command> --help' for more information about a command.\n\n")
   }
 }
 
