@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -10,7 +11,14 @@ import (
 	lgr "tideas/lggr"
 
 	"github.com/charmbracelet/glamour"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	flag "github.com/spf13/pflag"
+	"golang.org/x/text/language"
+)
+
+var (
+  localizer *i18n.Localizer
+  bundle *i18n.Bundle
 )
 
 type CommandRunner interface {
@@ -50,13 +58,14 @@ type MDCommand struct {
 
 func (mdc *MDCommand) Run() {
   fn := mdc.fname
-  if _, err := filepath.Match("*.md", filepath.Base(fn)); err != nil {
-		log.Fatal("Wrong file format, only *.md files are supported")
+  if m, err := filepath.Match("*.md", filepath.Base(fn)); !m || err != nil {
+		log.Fatal(getLocalized("bad_file"))
+    return
 	}
 
 	md, err := os.ReadFile(fn)
 	if err != nil {
-		log.Fatalf( "Unable to read from file: %v\n", err)
+		log.Fatalf( getLocalized("cant_read"), err)
 	}
 
 	gout, err := glamour.RenderBytes(md, mdc.style)
@@ -71,11 +80,11 @@ func NewMDCommand() *MDCommand {
   }, "dark", ""}
 
   mdc.fs.Usage = func() {
-    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated content of an *.md file\n%10sExample: log md -f README.md -s dark\n", mdc.name, "")
+    fmt.Fprintf(os.Stderr, "  %-8s" + getLocalized("md_usage_out") + "\n%10s"+ getLocalized("md_usage_ex") + "\n", mdc.name, "")
   }
 
-  mdc.fs.StringVar(&mdc.fname, "f", "", "An *.md file to output.")
-  mdc.fs.StringVar(&mdc.style, "s", "dark", "Style to use for ouputing fomated MD file. Available options are: dark|ascii|light|notty|dracula")
+  mdc.fs.StringVar(&mdc.fname, "f", "", getLocalized("md_flag_f"))
+  mdc.fs.StringVar(&mdc.style, "s", "dark", getLocalized("md_flag_s"))
 
   return mdc
 }
@@ -97,10 +106,10 @@ func NewInfoCommand() *InfoCommand {
   }, ""}
 
   inc.fs.Usage = func() {
-    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, preceeded by blue dot symbol\n%10sExample: log info -m \"Informational Message FYI\"", inc.name, "")
+    fmt.Fprintf(os.Stderr, "  %-8s" + getLocalized("info_usage_out") + "\n%10s" + getLocalized("info_usage_ex") + "\n", inc.name, "")
   }
 
-  inc.fs.StringVar(&inc.message, "m", "", "Informational Message to be printed")
+  inc.fs.StringVar(&inc.message, "m", "", getLocalized("info_flag_m"))
 
   return inc
 }
@@ -121,10 +130,10 @@ func NewSuccessCommand() *SuccessCommand {
   }, ""}
 
   scc.fs.Usage = func() {
-    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, preceeded by green check sign symbol\n%10sExample: log -success \"Success Message Congrats!\"", scc.name, "")
+    fmt.Fprintf(os.Stderr, "  %-8s" + getLocalized("success_usage_out") + "\n%10s" + getLocalized("success_usage_ex") + "\n", scc.name, "")
   }
 
-  scc.fs.StringVar(&scc.message, "m", "", "Success Message to be printed")
+  scc.fs.StringVar(&scc.message, "m", "", getLocalized("success_flag_m"))
 
   return scc
 }
@@ -145,10 +154,10 @@ func NewErrorCommand() *ErrorCommand {
   }, ""}
 
   erc.fs.Usage = func() {
-    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, with title \"ERROR\" followed by error message\n%10sExample: log -error \"Error Message, Fatal Error!\"", erc.name, "")
+    fmt.Fprintf(os.Stderr, "  %-8s" + getLocalized("error_usage_out") + "\n%10s" + getLocalized("error_usage_ex") + "\n", erc.name, "")
   }
 
-  erc.fs.StringVar(&erc.message, "m", "", "Error Message to be printed")
+  erc.fs.StringVar(&erc.message, "m", "", getLocalized("error_flag_m"))
 
   return erc
 }
@@ -169,10 +178,10 @@ func NewStarCommand() *StarCommand {
   }, ""}
 
   stc.fs.Usage = func() {
-    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, preceeded by star sign symbol\n%10sExample: log -star \"Star Message, Hey!\"", stc.name, "")
+    fmt.Fprintf(os.Stderr, "  %-8s" + getLocalized("star_usage_out") + "\n%10s" + getLocalized("star_usage_ex") + "\n", stc.name, "")
   }
 
-  stc.fs.StringVar(&stc.message, "m", "", "Stared Message to be printed")
+  stc.fs.StringVar(&stc.message, "m", "", getLocalized("star_flag_m"))
 
   return stc
 }
@@ -183,7 +192,7 @@ type WarnCommand struct {
 }
 
 func (w *WarnCommand) Run() {
-  lgr.Star(w.message)
+  lgr.Warn(w.message)
 }
 
 func NewWarnCommand() *WarnCommand {
@@ -193,10 +202,10 @@ func NewWarnCommand() *WarnCommand {
   }, ""}
 
   wrc.fs.Usage = func() {
-    fmt.Fprintf(os.Stderr, "  %-8sOutputs in terminal formated message, with title \"WARN\" followed by warning message\n%10sExample: log -warn \"Warning Message, Hey!\"", wrc.name, "")
+    fmt.Fprintf(os.Stderr, "  %-8s" + getLocalized("warn_usage_out") + "\n%10s" + getLocalized("warn_usage_ex") + "\n", wrc.name, "")
   }
 
-  wrc.fs.StringVar(&wrc.message, "m", "", "Warning Message to be printed")
+  wrc.fs.StringVar(&wrc.message, "m", "", getLocalized("warn_flag_m"))
 
   return wrc
 }
@@ -214,6 +223,27 @@ func (cr *CommandRepository) Get(id string) (CommandRunner, bool) {
 	return c, ok
 }
 
+func getLocalized(id string) string {
+  str, err := localizer.LocalizeMessage(&i18n.Message{
+    ID: id,
+  })
+  if err != nil {
+    log.Fatalf("Cant localize")
+  }
+
+  return str
+}
+
+func i18init() {
+  bundle = i18n.NewBundle(language.English)
+  bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
+  _, err := bundle.LoadMessageFile("cmd/resources/en.json")
+  if err != nil {
+    log.Fatalf("Unable to read language file: %v", err)
+  }
+  localizer = i18n.NewLocalizer(bundle)
+}
+
 func (cr *CommandRepository) Init() {
   flag.Usage = func() {
     fmt.Fprintf(os.Stderr, lggr.HelpTitle("USAGE") + "\n  %s <command> [flags] <argument>\n\n", os.Args[0])
@@ -227,11 +257,12 @@ func (cr *CommandRepository) Init() {
     }
 
     fmt.Fprint(os.Stderr, lggr.HelpTitle("LEARN MORE") + "\n")
-    fmt.Fprint(os.Stderr, "  Use 'log <command> --help' for more information about a command.\n\n")
+    fmt.Fprint(os.Stderr, "  " + getLocalized("learn_more_text") + "\n\n")
   }
 }
 
 func NewCommandRepository() *CommandRepository {
+  i18init()
   cr := &CommandRepository{cmds: make(map[string]CommandRunner)} // rememeber
   cr.Register("md", NewMDCommand())
   cr.Register("info", NewInfoCommand())

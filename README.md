@@ -174,3 +174,5 @@ I create open source projects out of love. Although I have a job, shelter, and a
 ## License
 
 Copyright © 2020-2021 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/go/cli/stylog/-/blob/master/LICENSE) licensed.
+
+

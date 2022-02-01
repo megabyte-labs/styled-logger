@@ -15,6 +15,7 @@ var (
 	cols              = getStdOutColumns()
 	emphasized        = regexp.MustCompile(`\x{0060}(.*)\x{0060}`)
 	bolded            = regexp.MustCompile(`\*(.*)\*`)
+  grayed            = regexp.MustCompile(`\x{0060}\x{0060}(.*)\x{0060}\x{0060}`)
 	logDecoratorRegex = regexp.MustCompile(`[\x{001B}\x{009B}][#();?[]*(?:\d{1,4}(?:;\d{0,4})*)?[\d<=>A-ORZcf-nqry]`)
 )
 

@@ -14,6 +14,7 @@ var (
 	greenBold           = color.New(color.FgGreen).Add(color.Bold)
   blueBold            = color.New(color.FgBlue).Add(color.Bold)
 	blackOnYellowBolded = color.New(color.FgBlack).Add(color.BgHiYellow).Add(color.Bold)
+  
 )
 
 func applyStyle(st *color.Color, s string) string {
