@@ -43,10 +43,9 @@ archives:
       - goos: windows
         format: zip
     replacements:
-      amd64: 64-bit
-      386: 32-bit
-      darwin: macOS
-      linux: Linux
+      amd64: x86_64
+      386: x86_32
+      darwin: macos
 
 universal_binaries:
   - replace: true
@@ -78,10 +77,9 @@ nfpms:
       - jq
       - yq
     replacements:
-      amd64: 64-bit
-      386: 32-bit
-      darwin: macOS
-      linux: Linux
+      amd64: x86_64
+      386: x86_32
+      darwin: macos
 
 snapcrafts:
   - id: default
@@ -90,10 +88,9 @@ snapcrafts:
     # yamllint disable-line rule:line-length
     description: 'This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).'
     replacements:
-      amd64: 64-bit
-      386: 32-bit
-      darwin: macOS
-      linux: Linux
+      amd64: x86_64
+      386: x86_32
+      darwin: macos
     confinement: classic
     license: MIT
     extra_files:
