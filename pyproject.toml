@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "styled-logger"
+name = "go-styled-logger"
 version = "0.0.1"
 description = "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)"
 authors = ["Brian Zalewski <brian@megabyte.space>"]
