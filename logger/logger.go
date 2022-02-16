@@ -1,4 +1,4 @@
-package lggr
+package flog
 
 import (
 	"fmt"

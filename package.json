@@ -1,59 +1,5 @@
 {
-  "private": false,
-  "name": "go-styled-logger",
-  "version": "0.0.1",
-  "description": "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)",
-  "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/styled-logger.git"
-  },
-  "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/go/cli/stylog/-/issues"
-  },
-  "type": "module",
-  "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
-    "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "bash .config/start.sh"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-emoji-conventional"
-    }
-  },
-  "dependencies": {},
-  "optionalDependencies": {},
-  "devDependencies": {
-    "@washingtondc/development": "^1.0.2",
-    "@washingtondc/prettier": "^1.0.0",
-    "@washingtondc/release": "^0.0.2",
-    "eslint-config-strict-mode": "^1.0.0",
-    "semantic-release-config": "^0.0.2",
-    "sleekfast": "^0.0.1"
-  },
-  "keywords": [
-    "automation",
-    "cli",
-    "go",
-    "go-lang",
-    "golang",
-    "mblabs",
-    "megabytelabs",
-    "professormanhattan",
-    "terminal",
-    "washingtondc"
-  ],
-  "engines": {
-    "node": ">=14.18.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "blueprint": {
     "binName": "stylog",
     "build_command": "go build -o dist/stylog app/log.go",
@@ -74,16 +20,49 @@
     "subgroup": "cli",
     "title": "Styled Logger - A CLI for Logging Pretty Messages"
   },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/go/cli/stylog/-/issues"
+  },
+  "changelog": {
+    "displayTypes": [
+      "feat",
+      "fix",
+      "perf",
+      "refactor",
+      "revert"
+    ],
+    "showAuthor": true
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-emoji-conventional"
+    }
+  },
+  "description": "A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)",
+  "devDependencies": {
+    "@washingtondc/development": "^1.0.2",
+    "@washingtondc/prettier": "^1.0.0",
+    "@washingtondc/release": "^0.0.2",
+    "eslint-config-strict-mode": "^1.0.31",
+    "semantic-release-config": "^0.0.16",
+    "sleekfast": "^0.0.1"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
   "eslintConfig": {
     "extends": "eslint-config-strict-mode",
     "rules": {
-      "max-len": "warn"
+      "import/no-extraneous-dependencies": "warn",
+      "max-len": "warn",
+      "max-lines": "warn"
     }
   },
   "funding": [
@@ -96,6 +75,20 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
+  "homepage": "https://megabyte.space",
+  "keywords": [
+    "automation",
+    "cli",
+    "go",
+    "go-lang",
+    "golang",
+    "mblabs",
+    "megabytelabs",
+    "professormanhattan",
+    "terminal",
+    "washingtondc"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "**/!(logo).(jpg|png)": [
       "task image:compress --"
@@ -132,18 +125,24 @@
       "task image:compress --"
     ]
   },
+  "name": "go-styled-logger",
   "ntl": {
     "descriptions": {
-      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "help": "Display the Bodega Taskfile.yml interactive help menu",
       "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
       "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
       "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
     }
   },
   "prettier": "@washingtondc/prettier",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "release": {
     "branches": [
       "main",
+      "master",
       "next",
       {
         "name": "beta",
@@ -155,5 +154,17 @@
       }
     ],
     "extends": "semantic-release-config"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/styled-logger.git"
+  },
+  "scripts": {
+    "help": "task --list",
+    "prepare": "task common:husky",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "bash .config/start.sh"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
