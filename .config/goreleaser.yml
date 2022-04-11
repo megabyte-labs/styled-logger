@@ -11,6 +11,32 @@ archives:
       - format: zip
         goos: windows
 
+aurs:
+  - commit_author:
+      email: help@megabyte.space
+      name: Megabyte Labs
+    description: A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)
+    homepage: 'https://github.com/megabyte-labs/styled-logger'
+    license: MIT
+    maintainers:
+      - Megabyte Labs <help@megabyte.space>
+    name: { { .ProjectName } }
+    # The AUR Git URL for this package.
+    # Defaults to empty. TODOTODOTODO
+    # git_url: 'ssh://aur@aur.archlinux.org/mypackage-bin.git'
+    package: |-
+      install -Dm755 "./mybin" "${pkgdir}/usr/bin/stylog"
+      install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/stylog/LICENSE"
+      mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+      mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+      mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+      install -Dm644 "./local/completion/bash/stylog.bash" "${pkgdir}/usr/share/bash-completion/completions/stylog"
+      install -Dm644 "./local/completion/zsh/stylog.zsh" "${pkgdir}/usr/share/zsh/site-functions/_stylog"
+      install -Dm644 "./local/completion/fish/stylog.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/stylog.fish"
+      # install -Dm644 "./local/man/stylog.1.gz" "${pkgdir}/usr/share/man/man1/stylog.1.gz"
+    private_key: '{{ .Env.AUR_KEY }}'
+    url_template: 'https://github.com/megabyte-labs/styled-logger/releases/{{ .Tag }}/{{ .ArtifactName }}'
+
 before:
   hooks:
     - go mod tidy
@@ -18,12 +44,12 @@ before:
 brews:
   - description: A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)
     folder: Formula
-    homepage: 'https://megabyte.space'
+    homepage: 'https://github.com/megabyte-labs/styled-logger'
     install: |-
       bin.install "stylog"
-      bash_completion.install "completion/bash/stylog.bash" => "stylog"
-      zsh_completion.install "completion/zsh/_stylog" => "_stylog"
-      fish_completion.install "completion/fish/stylog.fish"
+      bash_completion.install "local/completion/bash/stylog.bash" => "stylog"
+      zsh_completion.install "local/completion/zsh/_stylog" => "_stylog"
+      fish_completion.install "local/completion/fish/stylog.fish"
     license: MIT
     name: stylog
     tap:
@@ -77,21 +103,36 @@ gomod:
   proxy: false
 
 nfpms:
-  - description: A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)
+  - contents:
+      - dst: /usr/share/bash-completion/completions/stylog
+        file_info:
+          mode: 0644
+        src: ./local/completion/bash/stylog.bash
+      - dst: /usr/share/fish/completions/stylog.fish
+        file_info:
+          mode: 0644
+        src: ./local/completion/fish/stylog.fish
+      - dst: /usr/share/zsh/vendor-completions/_stylog
+        file_info:
+          mode: 0644
+        src: ./local/completion/zsh/stylog.zsh
+      - dst: /usr/share/man/man1/stylog.1.gz
+        file_info:
+          mode: 0644
+        src: ./local/man/stylog.1.gz
+      - dst: /usr/share/doc/stylog/copyright
+        file_info:
+          mode: 0644
+        src: ./LICENSE.md
+    description: A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)
     formats:
       - apk
       - deb
       - rpm
-    homepage: 'https://megabyte.space'
+    homepage: 'https://github.com/megabyte-labs/styled-logger'
     id: default
     license: MIT
     maintainer: Megabyte Labs <help@megabyte.space>
-    recommends:
-      - git
-    suggests:
-      - docker
-      - jq
-      - yq
     vendor: Megabyte LLC
 
 project_name: ''
@@ -99,15 +140,46 @@ project_name: ''
 release:
   disable: true
 
+scoop:
+  bucket:
+    branch: master
+    name: scoops
+    owner: installdoc
+    token: '{{ .Env.GITHUB_TOKEN }}'
+  commit_author:
+    email: help@megabyte.space
+    name: Megabyte Labs
+  commit_msg_template: 'Scoop update for {{ .ProjectName }} version {{ .Tag }}'
+  description: A CLI logger that outputs emojified log messages and also acts as a CLI for Glamour (gorgeous terminal markdown rendering library)
+  folder: Scoops
+  homepage: 'https://github.com/megabyte-labs/styled-logger'
+  license: MIT
+  post_install: ["Write-Host 'Installation complete!'"]
+
+  pre_install: ["Write-Host 'Beginning the installation..'"]
+  url_template: 'https://github.com/megabyte-labs/styled-logger/releases/{{ .Tag }}/{{ .ArtifactName }}'
 # eslint-disable max-len
 snapcrafts:
   - confinement: classic
     # yamllint disable-line rule:line-length
     description: 'This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).'
     extra_files:
-      - destination: completion
-        mode: 0755
-        source: completion
+      - destination: /usr/share/bash-completion/completions/stylog
+        mode: 0644
+        source: ./local/completion/bash/stylog.bash
+      - destination: /usr/share/fish/completions/stylog.fish
+        mode: 0644
+        source: ./local/completion/fish/stylog.fish
+      - destination: /usr/share/zsh/vendor-completions/_stylog
+        mode: 0644
+        source: ./local/completion/zsh/stylog.zsh
+      - destination: /usr/share/man/man1/stylog.1.gz
+        file_info:
+        mode: 0644
+        source: ./local/man/stylog.1.gz
+      - destination: /usr/share/doc/stylog/copyright
+        mode: 0644
+        source: ./LICENSE.md
     id: default
     license: MIT
     publish: true
