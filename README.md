@@ -58,6 +58,7 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [This Repository (Shared Common)](#this-repository-shared-common)
 - [Installation](#installation)
   - [Quick Method](#quick-method)
   - [Compile Program with Go](#compile-program-with-go)
@@ -73,7 +74,12 @@
 ## Overview
 
 This project was built to provide styled terminal log messages from within shell scripts (mainly housed in a [Task](https://github.com/go-task/task) project). It supports basic log message types that are prepended with an emoji and also provides the capability of logging markdown files styled by [Glamour](https://github.com/charmbracelet/glamour).
-{{ load:docs/partials/features.md }}
+
+<a href="#this-repository-shared-common" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
+
+## This Repository (Shared Common)
+
+This repository houses files that propagate downstream to project-specific repositories.
 
 <a href="#installation" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
